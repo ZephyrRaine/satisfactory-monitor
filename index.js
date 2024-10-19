@@ -11,6 +11,39 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
+app.get('/check-players', (req, res)=> {
+    //make a post request to a specific url with this json
+    let jsonOBJ = {
+        "content": null,
+        "embeds": [
+          {
+            "title": "Quelqu'un s'est connecté",
+            "description": "Joueurs en ligne :",
+            "color": 5814783
+          }
+        ],
+        "attachments": []
+      };
+
+      console.log(jsonOBJ);
+      console.log(JSON.stringify(jsonOBJ));
+      console.log(process.env.WEBHOOK_URL);
+      const axios = require('axios');
+      axios.post(process.env.WEBHOOK_URL, jsonOBJ, {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+      .then((response) => {
+        console.log(`statusCode: ${response.statusCode}`);
+        console.log(response);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+      res.send('Check players');
+});
+
 app.get('/latest', (req, res) => {
     const directoryPath = process.env.DIRECTORY_PATH;
     console.log(directoryPath);
