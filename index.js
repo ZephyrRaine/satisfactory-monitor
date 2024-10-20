@@ -6,12 +6,11 @@ const app = express();
 const port = 8888;
 require('dotenv').config();
 
-
-app.options('*', cors());
+app.use(cors());
 
 // Basic route
 app.get('/', (req, res) => {
-    res.send('Helfefelo World!');
+    res.send('Hello World!');
 });
 
 app.get('/latest', (req, res) => {
