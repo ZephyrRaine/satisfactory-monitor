@@ -1,3 +1,4 @@
+const https = require('https');
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
@@ -13,6 +14,13 @@ app.use(cors());
 app.get('/', (req, res) => {
     res.send('Hello World!');
 });
+
+const options = {
+  cert: fs.readFileSync('./sslcert/fullchain.pem'),
+  key: fs.readFileSync('./sslcert/privkey.pem')
+};
+
+https.createServer(options, app).listen(8443);
 
 app.get('/latest', (req, res) => {
     const directoryPath = process.env.DIRECTORY_PATH;
