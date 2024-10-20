@@ -1,11 +1,13 @@
 const express = require('express');
 const fs = require('fs');
 const path = require('path');
-
+const cors = require('cors');
 const app = express();
 const port = 8888;
 require('dotenv').config();
 
+
+app.use(cors());
 // Basic route
 app.get('/', (req, res) => {
     res.send('Hello World!');
