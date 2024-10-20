@@ -7,7 +7,8 @@ const port = 8888;
 require('dotenv').config();
 
 
-app.use(cors());
+app.options('*', cors());
+
 // Basic route
 app.get('/', (req, res) => {
     res.send('Hello World!');
