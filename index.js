@@ -6,6 +6,7 @@ const app = express();
 const port = 8888;
 require('dotenv').config();
 
+app.use(express.static('static'));
 app.use(cors());
 
 // Basic route
