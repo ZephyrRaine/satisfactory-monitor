@@ -7,7 +7,7 @@ services:
     ports:
       - '8888:8888/tcp'
     volumes:
-      - './config:/config'
+      - '/opt/docker/satisfactory-server/config/saved/server:/saves'
     env_file: 
       - '.env'
     restart: unless-stopped
