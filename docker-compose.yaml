@@ -6,6 +6,7 @@ services:
       context: './'
     ports:
       - '8888:8888/tcp'
+      - '8443:8443/tcp'
     volumes:
       - '/opt/docker/satisfactory-server/config/saved/server:/saves'
       - './sslcert:/sslcert'
